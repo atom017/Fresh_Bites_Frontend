@@ -9,9 +9,7 @@ export const useGetMyUser = () => {
     const { getAccessTokenSilently } = useAuth0();
 
     const getMyUserRequest = async (): Promise<User> => {
-
         const accessToken = await getAccessTokenSilently();
-
         const response = await fetch(`${API_BASE_URL}/api/user`, {
             method: "GET",
             headers: {
@@ -27,7 +25,7 @@ export const useGetMyUser = () => {
         return response.json();
     }
 
-    const { data: currentUser, isLoading, isError, error } = useQuery("fetchCurrentUser", getMyUserRequest);
+    const { data: currentUser, isLoading, error } = useQuery("fetchCurrentUser", getMyUserRequest);
 
     if (error) {
         toast.error(error.toString());
@@ -67,12 +65,11 @@ export const useCreateMyUser = () => {
         }
     };
 
-    const { mutateAsync: createUser, isLoading, isError, isSuccess } = useMutation(createMyUserRequest);
+    const { mutateAsync: createUser, isLoading, isSuccess } = useMutation(createMyUserRequest);
 
     return {
         createUser,
         isLoading,
-        isError,
         isSuccess
     }
 };

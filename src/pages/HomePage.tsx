@@ -1,5 +1,3 @@
-import React from 'react'
-import landingImage from '../assets/food.jpg'
 import appImage from '../assets/appdownload.jpeg'
 
 const HomePage = () => {

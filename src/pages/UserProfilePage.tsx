@@ -1,5 +1,4 @@
 import UserProfileForm from 'src/forms/user-profile-form/UserProfileForm'
-import React from 'react'
 import { useGetMyUser, useUpdateMyUser } from 'src/api/MyUserApi'
 
 const UserProfilePage = () => {

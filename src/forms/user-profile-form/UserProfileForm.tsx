@@ -16,12 +16,10 @@ const formSchema = z.object({
 type UserFormData = z.infer<typeof formSchema>;
 
 
-import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
+import { useEffect } from 'react'
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from 'src/components/ui/form';
-import { fields } from '@hookform/resolvers/typanion/src/__tests__/__fixtures__/data.js';
 import { Input } from 'src/components/ui/input';
 import LoadingButton from 'src/components/LoadingButton';
 import { Button } from 'src/components/ui/button';
