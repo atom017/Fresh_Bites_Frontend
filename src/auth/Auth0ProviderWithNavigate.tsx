@@ -1,9 +1,7 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { AppState, Auth0Provider, useAuth0, User } from '@auth0/auth0-react';
-
+import { AppState, Auth0Provider, User } from '@auth0/auth0-react';
 import { useNavigate } from 'react-router-dom';
-import { useCreateMyUser } from 'src/api/MyUserApi';
+
 
 type props = {
     children: React.ReactNode;
@@ -11,8 +9,7 @@ type props = {
 
 const Auth0ProviderWithNavigate = ({ children }: props) => {
     const navigate = useNavigate();
-    const { createUser } = useCreateMyUser();
-    const { getAccessTokenSilently } = useAuth0();
+
     const domain = import.meta.env.VITE_AUTH0_DOMAIN;
     const clientId = import.meta.env.VITE_AUTH0_CLIENT;
     const redirectURI = import.meta.env.VITE_AUTH0_CALLBACK_URL;
@@ -25,8 +22,9 @@ const Auth0ProviderWithNavigate = ({ children }: props) => {
     }
 
     const onRedirectCallBack = async (appState?: AppState, user?: User) => {
-
-        navigate("/auth-callback")
+        console.log(appState);
+        console.log(user);
+        navigate("/auth-callback");
     }
     return (
         <Auth0Provider domain={domain}
